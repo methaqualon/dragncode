@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Drag'n'code</title>
+    <link rel="stylesheet" href="https://bootswatch.com/5/united/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <style>
+      #example3-right{
+        border: 1px dashed black;
+        border-radius: 10px;
+        min-height: 43px;
+        font-size: 30px;
+        border-bottom: none;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+      }
+
+      .foot{
+        font-size: 30px;
+      }
+
+      #example3-right > .list-group-item{
+        margin-bottom: 53px;
+      }
+
+      .list-group-item{
+        font-size: 22px;
+      }
+
+
+      #example3-left{
+        cursor: pointer;
+      }
+
+      #example3-right .ccontrols{
+        display: flex !important;
+      }
+
+      #example3-left .ccontrols{
+        display: none !important;
+      }
+
+      #example3-right .ccname{
+        display: none !important;
+      }
+
+      #example3-left .ccname{
+        display: flex !important;
+      }
+
+      .trasher{
+        cursor: pointer;
+      }
+
+      #example3-left .bottom-arrow{
+        display: none;
+      }
+
+      #example3-right .bottom-arrow{
+          position: absolute;
+          left: 0;
+          right: 0;
+          margin-top: 20px;
+          margin-left: 47.5%;
+          width: 0;
+          height: 0;
+      }
+
+      p{
+        text-align: left;
+      }
+
+    </style>
+  </head>
+  <body>
+
+    <br>
+    <div class="container">
+      <div class="text-center">
+        <h1>
+          <img src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjM4MyIgcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQiIHZpZXdCb3g9IjAgMCAyNTYgMzgzIiB3aWR0aD0iMjU2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im0yNTMuNDIxNiAyMTQuMjQ2MTE3aC0yNTEuMjN2LTE0LjE2OGMwLTkuNTIgNy43MTctMTcuMjM3IDE3LjIzNi0xNy4yMzdoMjE2Ljc1N2M5LjUyIDAgMTcuMjM3IDcuNzE3IDE3LjIzNyAxNy4yMzd6IiBmaWxsPSIjZGZkZWRmIi8+PHBhdGggZD0ibTIzNS45MTkyIDM3OC41NTI4MTdoLTIxNi4yMjZjLTkuNjY2IDAtMTcuNTAyLTcuODM2LTE3LjUwMi0xNy41MDJ2LTE0Ni44MDVoMjUxLjIzdjE0Ni44MDVjMCA5LjY2Ni03LjgzNSAxNy41MDItMTcuNTAyIDE3LjUwMiIgZmlsbD0iI2ZmZiIvPjxwYXRoIGQ9Im0yNTAuMzAyIDIxMS4zOTc1MTd2LTEyLjcwNmMwLTcuNTAxLTYuMDgtMTMuNTgyLTEzLjU4MS0xMy41ODJoLTIxNy40NDJjLTcuNTAxIDAtMTMuNTgxIDYuMDgxLTEzLjU4MSAxMy41ODJ2MTIuNzA2em0wIDE1MS40Njl2LTE0NS43NzFoLTI0NC42MDR2MTQ1Ljc3MWMwIDcuNTAxIDYuMDggMTMuNTgxIDEzLjU4MSAxMy41ODFoMjE3LjQ0MmM3LjUwMSAwIDEzLjU4MS02LjA4IDEzLjU4MS0xMy41ODF6bS0yMjkuNzQ4LTE4My40NTQuODQ2LTkuMjM2LTMuNTkyIDkuMzFjLjQ4Ny0uMDM3Ljk3NC0uMDc0IDEuNDcxLS4wNzR6bTIxMy40MDEtMTUuNTcgMS4yNTQgMTUuNTdoMS41MTJjLjgwOSAwIDEuNjAxLjA2NiAyLjM4NC4xNjN6bTE3LjI0NyAyMi4xNjRjMi45NzcgMy4zOTQgNC43OTggNy44MjYgNC43OTggMTIuNjg1djE2NC4xNzVjMCAxMC42MzEtOC42NDkgMTkuMjc5LTE5LjI3OSAxOS4yNzloLTIxNy40NDJjLTEwLjYzIDAtMTkuMjc5LTguNjQ4LTE5LjI3OS0xOS4yNzl2LTE2NC4xNzVjMC01LjE1MiAyLjA0My05LjgyNyA1LjM0Ny0xMy4yOWwxOS4yMi00OS44MTcgOC4zODEtOTEuNTU0MDAwMyA5LjQ1Ni44NjUtNy41NTIgODIuNDkyMDAwMyAyLjY2IDEuMDI2LTMuNjEgOS4zNTgtMy44MTIgNDEuNjQxaDE5NS41OTNsLTEwLjg1NC0xMzQuNzQ1MDAwMyA5LjQ2NC0uNzYzIDYuNDAyIDc5LjQ2OTAwMDMuMDA0LS4wMDF6bS0yMzAuMDQ1NSA4LjM5YzIuMzc2IDAgNC4zMDIgMS45MjYgNC4zMDIgNC4zMDJzLTEuOTI2IDQuMzAyLTQuMzAyIDQuMzAyLTQuMzAyLTEuOTI2LTQuMzAyLTQuMzAyIDEuOTI2LTQuMzAyIDQuMzAyLTQuMzAyem0xNC43MDggMGMyLjM3NiAwIDQuMzAyIDEuOTI2IDQuMzAyIDQuMzAycy0xLjkyNiA0LjMwMi00LjMwMiA0LjMwMi00LjMwMi0xLjkyNi00LjMwMi00LjMwMiAxLjkyNi00LjMwMiA0LjMwMi00LjMwMnptMTQuMjQ0NiAwYzIuMzc2IDAgNC4zMDIgMS45MjYgNC4zMDIgNC4zMDJzLTEuOTI2IDQuMzAyLTQuMzAyIDQuMzAyLTQuMzAyLTEuOTI2LTQuMzAyLTQuMzAyIDEuOTI2LTQuMzAyIDQuMzAyLTQuMzAyeiIvPjxwYXRoIGQ9Im0zNi4wMjE3IDI4Ny43NDgxMTdjLjczOS0uODU1IDEuMTI4LTEuOTc5IDEuMTI4LTMuMzc0IDAtMS4zOTYtLjM4OS0yLjQ3NS0xLjEyOC0zLjMzLS43NzgtLjg1NS0xLjg2OC0xLjI2LTMuMjY4LTEuMjZoLTYuODQ3djkuMjIzaDYuODQ3YzEuNCAwIDIuNDktLjQwNSAzLjI2OC0xLjI1OXptLTMuMjY4LTEzLjQ5N2MyLjk1NiAwIDUuMjkxLjkgNy4wNDEgMi43NDQgMS43NTEgMS44NDQgMi42MDcgNC4zMTggMi42MDcgNy4zNzkgMCAzLjEwMy0uODU2IDUuNTMzLTIuNTY3IDcuMzc3LTEuNzUxIDEuODQ2LTQuMDg1IDIuNzktNy4wODEgMi43OWgtNi44NDd2MTIuNDE0aC01LjI5MXYtMzIuNzA0em0yOC41NDQ0IDIwLjA1NjV2LTkuNTRoNS42OTh2MjEuNTRoLTUuNjk4di0xLjk0MmMtMS43MjcgMS43MjYtMy45NzEgMi41ODktNi43NzcgMi41ODktMi41OSAwLTQuNjYyLS44NjMtNi4yNTktMi41NDZzLTIuMzc0LTMuODQyLTIuMzc0LTYuNTE4di0xMy4xMjNoNS42OTh2MTEuOTE0YzAgMS41MTEuMzg4IDIuNzYzIDEuMjA4IDMuNjcuNzc3LjkwNiAxLjgxMyAxLjM4MSAzLjE1MSAxLjM4MSAzLjU4MyAwIDUuMzUzLTIuNDYxIDUuMzUzLTcuNDI1em0yNy45MjYyIDUuOTE0MWMxLjEyMi0xLjE2NiAxLjY4My0yLjcyIDEuNjgzLTQuNjYycy0uNTYxLTMuNTQtMS42ODMtNC43MDVjLTEuMTY2LTEuMTY2LTIuNTktMS43Ny00LjM2LTEuNzctMS41OTcgMC0zLjAyMS42MDQtNC4yNzMgMS44MTNzLTEuODU2IDIuNzYyLTEuODU2IDQuNjYyYzAgMS44OTkuNjA0IDMuNDU0IDEuODU2IDQuNjE4IDEuMjUyIDEuMjEgMi42NzYgMS44MTQgNC4yNzMgMS44MTQgMS43NyAwIDMuMTk0LS42MDQgNC4zNi0xLjc3em0tMy4zNjctMTYuMTAxYzIuODA2IDAgNS4zMDkgMS4wOCA3LjQyNSAzLjIzOCAyLjExNSAyLjIwMSAzLjE1IDQuOTIgMy4xNSA4LjIwMSAwIDMuMjgtMS4wMzUgNi0zLjE1IDguMTU4LTIuMTE2IDIuMTU5LTQuNTc2IDMuMjM3LTcuNDI1IDMuMjM3LTIuODA2IDAtNS4xOC0uNzc3LTcuMTIyLTIuMzN2MTEuOTU5aC01LjY5OHYtMzEuODE2aDUuNjk4djEuNzI3YzEuODk5LTEuNTk3IDQuMjczLTIuMzc0IDcuMTIyLTIuMzc0em0zMS4wNzc1IDE2LjEwMWMxLjEyMi0xLjE2NiAxLjY4My0yLjcyIDEuNjgzLTQuNjYycy0uNTYxLTMuNTQtMS42ODMtNC43MDVjLTEuMTY2LTEuMTY2LTIuNTktMS43Ny00LjM2LTEuNzctMS41OTcgMC0zLjAyMS42MDQtNC4yNzMgMS44MTNzLTEuODU3IDIuNzYyLTEuODU3IDQuNjYyYzAgMS44OTkuNjA1IDMuNDU0IDEuODU3IDQuNjE4IDEuMjUyIDEuMjEgMi42NzYgMS44MTQgNC4yNzMgMS44MTQgMS43NyAwIDMuMTk0LS42MDQgNC4zNi0xLjc3em0tMy4zNjgtMTYuMTAxYzIuODA2IDAgNS4zMSAxLjA4IDcuNDI2IDMuMjM4IDIuMTE0IDIuMjAxIDMuMTUgNC45MiAzLjE1IDguMjAxIDAgMy4yOC0xLjAzNiA2LTMuMTUgOC4xNTgtMi4xMTYgMi4xNTktNC41NzYgMy4yMzctNy40MjYgMy4yMzctMi44MDUgMC01LjE3OS0uNzc3LTcuMTIyLTIuMzN2MTEuOTU5aC01LjY5N3YtMzEuODE2aDUuNjk3djEuNzI3YzEuOS0xLjU5NyA0LjI3NC0yLjM3NCA3LjEyMi0yLjM3NHptMTguOTkxNSA4LjkzNWgxMC40MDNjLS4zNDUtMS4zMzgtLjk5My0yLjMzLTEuODk5LTIuOTc5LS45MDctLjY0Ny0xLjk4NS0uOTkyLTMuMTk1LS45OTItMS4xNjQgMC0yLjI4Ny4zNDUtMy4yOCAxLjAzNi0xLjAzNi42OTEtMS43MjcgMS42ODMtMi4wMjkgMi45MzV6bTUuMzA5LTguOTM1YzIuOTM2IDAgNS40ODMgMS4wMzYgNy41OTggMy4wNjUgMi4xMTUgMi4wNzIgMy4xOTQgNC43MDQgMy4zMjQgNy45NDJ2MS45NDNoLTE2LjQwM2MuMzAyIDEuNTEuOTQ5IDIuNzE4IDEuOTQzIDMuNjI2Ljk5Mi45MDYgMi4xMTQgMS4zOCAzLjQ1MiAxLjM4IDIuNDYxIDAgNC4yMzEtLjk0OSA1LjM1My0yLjg0OGw1LjA5NCAxLjA3OWMtLjkwNyAyLjIwMi0yLjI4OCAzLjg0My00LjEwMSA0Ljk2NXMtMy45MjggMS42ODItNi4zNDYgMS42ODJjLTMuMTA4IDAtNS43NDEtMS4wNzgtNy44NTYtMy4xOTNzLTMuMTk1LTQuODc4LTMuMTk1LTguMjAyYzAtMy4zMjMgMS4wOC02LjA4NiAzLjIzOC04LjI0NSAyLjExNS0yLjExNCA0Ljc0OS0zLjE5NCA3Ljg5OS0zLjE5NHptMjYuNjMyNCAxNy41MjU4YzEuMDc5IDAgMi4yODgtLjM0NiAzLjU4My0xLjAzNmwxLjY0IDQuNzQ4Yy0xLjk4NiAxLjA3OS0zLjg0MiAxLjU5Ny01LjYxMiAxLjU5Ny0yLjYzMyAwLTQuNzA1LS43MzQtNi4yMTYtMi4xNTktMS41MS0xLjQyMy0yLjI0NC0zLjUzOS0yLjI0NC02LjQzMXYtOC45MzZoLTQuNjE5di00LjY2Mmg0LjYxOXYtNi41MTdoNS42OTh2Ni41MTdoNy4wMzZ2NC42NjJoLTcuMDM2djguNTA0YzAgMi40NjEgMS4wMzYgMy43MTMgMy4xNTEgMy43MTN6bTExLjk1NDYtOC41OTA4aDEwLjQwM2MtLjM0NS0xLjMzOC0uOTkzLTIuMzMtMS44OTktMi45NzktLjkwNy0uNjQ3LTEuOTg1LS45OTItMy4xOTUtLjk5Mi0xLjE2NCAwLTIuMjg3LjM0NS0zLjI4IDEuMDM2LTEuMDM2LjY5MS0xLjcyNyAxLjY4My0yLjAyOSAyLjkzNXptNS4zMDktOC45MzVjMi45MzYgMCA1LjQ4MyAxLjAzNiA3LjU5OCAzLjA2NSAyLjExNSAyLjA3MiAzLjE5NCA0LjcwNCAzLjMyNCA3Ljk0MnYxLjk0M2gtMTYuNDAzYy4zMDIgMS41MS45NDkgMi43MTggMS45NDMgMy42MjYuOTkyLjkwNiAyLjExNCAxLjM4IDMuNDUyIDEuMzggMi40NjEgMCA0LjIzMS0uOTQ5IDUuMzUzLTIuODQ4bDUuMDkzIDEuMDc5Yy0uOTA2IDIuMjAyLTIuMjg3IDMuODQzLTQuMSA0Ljk2NXMtMy45MjggMS42ODItNi4zNDYgMS42ODJjLTMuMTA4IDAtNS43NDEtMS4wNzgtNy44NTYtMy4xOTNzLTMuMTk1LTQuODc4LTMuMTk1LTguMjAyYzAtMy4zMjMgMS4wOC02LjA4NiAzLjIzOC04LjI0NSAyLjExNS0yLjExNCA0Ljc0OS0zLjE5NCA3Ljg5OS0zLjE5NHptMjAuMjg2MiA4LjkzNWgxMC40MDNjLS4zNDUtMS4zMzgtLjk5My0yLjMzLTEuODk5LTIuOTc5LS45MDctLjY0Ny0xLjk4NS0uOTkyLTMuMTk1LS45OTItMS4xNjQgMC0yLjI4Ny4zNDUtMy4yOCAxLjAzNi0xLjAzNi42OTEtMS43MjcgMS42ODMtMi4wMjkgMi45MzV6bTUuMzA5LTguOTM1YzIuOTM2IDAgNS40ODMgMS4wMzYgNy41OTggMy4wNjUgMi4xMTUgMi4wNzIgMy4xOTQgNC43MDQgMy4zMjQgNy45NDJ2MS45NDNoLTE2LjQwM2MuMzAyIDEuNTEuOTQ5IDIuNzE4IDEuOTQzIDMuNjI2Ljk5Mi45MDYgMi4xMTQgMS4zOCAzLjQ1MiAxLjM4IDIuNDYxIDAgNC4yMzEtLjk0OSA1LjM1My0yLjg0OGw1LjA5NCAxLjA3OWMtLjkwNyAyLjIwMi0yLjI4OCAzLjg0My00LjEwMSA0Ljk2NXMtMy45MjggMS42ODItNi4zNDYgMS42ODJjLTMuMTA4IDAtNS43NDEtMS4wNzgtNy44NTYtMy4xOTNzLTMuMTk1LTQuODc4LTMuMTk1LTguMjAyYzAtMy4zMjMgMS4wOC02LjA4NiAzLjIzOC04LjI0NSAyLjExNS0yLjExNCA0Ljc0OS0zLjE5NCA3Ljg5OS0zLjE5NHptMjguNjYxMi4zNDUxYy42NDggMCAxLjE2Ni4wNDMgMS41MTIuMTcybC0uMzAzIDUuNDgzaC0xLjI1MWMtNS4xMzcgMC03LjY4NSAzLjA2NS03LjY4NSA5LjIzOHY2Ljk0OWgtNS42OTd2LTIxLjU0aDUuNjk3djMuOTI4YzEuOTQzLTIuODA2IDQuNTMzLTQuMjMgNy43MjctNC4yM3oiLz48cGF0aCBkPSJtMjExLjA5NTQgMTMyLjYzODIxNyAzMC43NDEtMTQuODQxdi0xNC44NGwtNzEuMDIzLTMzLjkyMjAwMDMgNzEuMDIzLTM2LjU3MXYtMTQuMzFsLTI5LjY4MS0xMy43ODA5OTk5Ni04NC4wOTYgNDEuODcwOTk5OTYtODUuNTEtNDEuODcwOTk5OTYtMjcuNTYxIDE0Ljg0MDk5OTk2djEyLjcybDY2Ljc4MiAzNi41NzEtNjYuNzgyIDMzLjkyMjAwMDN2MTUuMzdsMjguNjIxIDE0Ljg0MSA4NC44MDMtNDMuNDYyMDAwM3oiIGZpbGw9IiMwMGQ4YTIiLz48cGF0aCBkPSJtMjE0Ljk0OTQgMTI2LjU4NDUxN3YtNi4zOTJsMjMuMTQtMTEuOTkxdjcuMTh6bS0xOTguMDk5LTE4LjU1MSAyMi4zNiAxMi44MzZ2NS4xMWwtMjIuMzYtMTEuMzEyem0xMTQuNTMzLTI2Ljk5NDAwMDMgNzYuOTE5IDM4LjAwNTAwMDN2Ny42NDJsLTc2LjkxOS0zOS40MDUwMDAzem0tODUuNTI2IDM5LjExNzAwMDMgNzguODc5LTM5LjEwOTAwMDN2Ni4yMzJsLTc4Ljg3OSAzOS45MDgwMDAzem01NS44NTItNjMuOTA1MDAwMy03OS44MjItMzguNTM4IDIwLjY3NC0xMC41MDY5OTk5NiA4NS40OTggNDQuMzIyOTk5OTYgODQuMDY3LTQ0LjMwMzk5OTk2IDIxLjQwNCAxMC45NjI5OTk5Ni03Ny44NDEgMzkuMTc0Yy0zLjExMiAxLjU2Ni0zLjEwNyA2LjAxMS4wMDggNy41N2w3Ny4wMzggMzguNTU3MDAwMy0xOS45NjggMTAuMzQ3LTg0LjcwOC00My40MDMwMDAzLTg2LjIwNiA0NC4yODkwMDAzLTE5LjY4OS0xMS4zMDMgNzkuNTg5LTM5LjU2MjAwMDNjMy4xNTMtMS41NjcgMy4xMjctNi4wNzUtLjA0NC03LjYwNnptLTgzLjg2NS0yNS40ODF2LTcuMDE0bDc0LjQ0NiAzNy4xNDItNy41MjYgMy4wMDd6bTE1Mi42NTQgMzMuNTQ4Yy0uMTAyLS4wNjItNy4xMy0zLjM3OC03LjEzLTMuMzc4bDc0LjcyMS0zNy42MDV2Ny4wNDV6bTcuNDc5IDMuNjgzIDY1LjY3NS0zMi45NzZjLjY2NS0uMzM0IDEuMDg1LTEuMDE1IDEuMDg1LTEuNzU5di0xNS42MDNjMC0uNzM5LS40MTQtMS40MTUtMS4wNzEtMS43NTJsLTMwLjYzMy0xNS42ODk5OTk5NmMtLjU2MS0uMjg3LTEuMjI2LS4yODgtMS43ODgtLjAwM2wtODIuMzAzIDQxLjc2Mzk5OTk2Yy0uNTU1LjI4Mi0xLjIxMS4yODUtMS43NjkuMDA2bC04My43NTMtNDEuNzgxOTk5OTZjLS41NTctLjI3OC0xLjIxNC0uMjc1LTEuNzcuMDA3bC0zMC4zNzEgMTUuNDMzOTk5OTZjLS42NjEuMzM2LTEuMDc3IDEuMDE0LTEuMDc3IDEuNzU1djE1Ljg1NWMwIC43NDkuNDI1IDEuNDMzIDEuMDk3IDEuNzY1bDY1Ljk1MSAzMi41ODQtNjUuNjQ2IDMyLjU5NTAwMDNjLS42NTcuMzI3LTEuMDc5Ljk5Mi0xLjA5MiAxLjcyN2wtLjI4NyAxNS41OTFjLS4wMTQuNzU1LjQwNiAxLjQ1MSAxLjA3OSAxLjc5MmwzMS41MzcgMTUuOTU2Yy41NTcuMjgxIDEuMjE0LjI4MiAxLjc3Mi4wMDJsODIuNTU4LTQxLjQ1NTAwMDNjLjU1OC0uMjgxIDEuMjE3LS4yNzkgMS43NzUuMDA0bDgxLjUyOSA0MS40NTQwMDAzYy41NDguMjc4IDEuMTk1LjI4NSAxLjc0OS4wMTdsMzEuNDAyLTE1LjIwM2MuNjc5LS4zMjkgMS4xMTEtMS4wMTcgMS4xMTEtMS43NzF2LTE2LjI5YzAtLjc1MS0uNDI3LTEuNDM2LTEuMTAxLTEuNzY3eiIvPjwvc3ZnPg==" width=40 style="margin-top:-30px;" class="img-fluid">
+          Drag'n'code
+        </h1>
+        <br>
+        <h3>Puppeteer code generator via drag'n'dropping blocks from the left to the right</h3>
+        <br><br>
+        <div class="row">
+          <div class="col">
+            <h5>
+              Fully client-side
+            </h5>
+            <p>
+              <br>
+              Don't require any server-side logic, just only one HTML file with scripts and styles included via CDN.
+              <br>
+              Keep in mind that it don't have any initialization code, only `payload`.
+            </p>
+          </div>
+          <div class="col">
+            <h5>
+              Very simple
+            </h5>
+            <p>
+              <br>
+              Just move any blocks from the left panel to the right panel, and code will be generated.
+              <br>
+              Change any options in clonned blocks.
+              <br>
+              Take generated code.
+            </p>
+          </div>
+          <div class="col">
+            <h5>
+              Extendable
+            </h5>
+            <p>
+              <br>
+              Download repository to your PC and edit this file if you want to add/edit any commands.
+              <br>
+              Feel free to communicate with us - <a href="https://github.com/methaqualon/dragncode">drag'n'code's github</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <br><br>
+      <div class="row">
+        <div class="col-4">
+          <div class="text-center">
+            <h4>Code blocks</h4>
+          </div>
+          <div id="example3-left" class="list-group">
+
+            <div class="list-group-item col">
+              <div class="row ccname">
+                <div class="col-12">
+                  <i class="bi bi-arrows-move"></i> Go to the page
+                </div>
+              </div>
+              <div class="row ccontrols">
+                <div class="col-2">
+                  <span class="funcname">going</span>
+                </div>
+                <div class="col-8">
+                  <input type="text" class="form-control form-control-sm" autocomplete="off" placeholder="https://...">
+                </div>
+                <div class="col-2">
+                  <div class="float-end trasher">
+                    <i class="bi bi-trash" style="color: red"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="bottom-arrow">
+                <i class="bi bi-arrow-down"></i>
+              </div>
+            </div>
+
+            <div class="list-group-item col">
+              <div class="row ccname">
+                <div class="col-12">
+                  <i class="bi bi-arrows-move"></i> Wait seconds
+                </div>
+              </div>
+              <div class="row ccontrols">
+                <div class="col-2">
+                  <span class="funcname">waiting</span>
+                </div>
+                <div class="col-8">
+                  <input type="text" class="form-control form-control-sm" autocomplete="off" placeholder="3000">
+                </div>
+                <div class="col-2">
+                  <div class="float-end trasher">
+                    <i class="bi bi-trash" style="color: red"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="bottom-arrow">
+                <i class="bi bi-arrow-down"></i>
+              </div>
+            </div>
+
+            <div class="list-group-item col">
+              <div class="row ccname">
+                <div class="col-12">
+                  <i class="bi bi-arrows-move"></i> Click on the element
+                </div>
+              </div>
+              <div class="row ccontrols">
+                <div class="col-2">
+                  <span class="funcname">clicking</span>
+                </div>
+                <div class="col-8">
+                  <input type="text" class="form-control form-control-sm" autocomplete="off" placeholder=".submit-button">
+                </div>
+                <div class="col-2">
+                  <div class="float-end trasher">
+                    <i class="bi bi-trash" style="color: red"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="bottom-arrow">
+                <i class="bi bi-arrow-down"></i>
+              </div>
+            </div>
+
+            <div class="list-group-item col">
+              <div class="row ccname">
+                <div class="col-12">
+                  <i class="bi bi-arrows-move"></i> Type text to the input
+                </div>
+              </div>
+              <div class="row ccontrols">
+                <div class="col-2">
+                  <span class="funcname">typing</span>
+                </div>
+                <div class="col-8">
+                  <input type="text" class="form-control form-control-sm" autocomplete="off" placeholder="selector">
+                  <input type="text" class="form-control form-control-sm" autocomplete="off" placeholder="text">
+                </div>
+                <div class="col-2">
+                  <div class="float-end trasher">
+                    <i class="bi bi-trash" style="color: red"></i>
+                  </div>
+                </div>
+              </div>
+              <div class="bottom-arrow">
+                <i class="bi bi-arrow-down"></i>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="col">
+          <div class="text-center">
+            <h4>Block diagram</h4>
+          </div>
+          <div id="example3-right" class="list-group col">
+          </div>
+          <div class="foot text-center">
+            <i class="bi bi-sign-stop"></i>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div>
+        <div class="text-center">
+          <h4>Code</h4>
+        </div>
+        <pre id="code"></pre>
+        <br><br><br>
+      </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-sortablejs@latest/jquery-sortable.js"></script>
+    <script type="text/javascript">
+
+      new Sortable($('#example3-left')[0], {
+        group: {
+            name: 'shared',
+            pull: 'clone',
+            put: false
+        },
+        animation: 150,
+        sort: false,
+        onEnd: function (/**Event*/evt) {
+      		evt.newDraggableIndex; // element's new index within new parent, only counting draggable elements
+          // console.log(evt.newDraggableIndex);
+          var newid = 'tempelem'+evt.newDraggableIndex
+          $(evt.item).attr('id', newid)
+          document.getElementById(newid).getElementsByClassName('trasher')[0].onclick = (1,eval)('(function(event){' + '$("#'+newid+'").remove();' + '})');
+      	},
+      });
+
+      new Sortable($('#example3-right')[0], {
+        group: {
+            name: 'shared',
+        },
+        animation: 150,
+        swap: true, // Enable swap plugin
+	      swapClass: 'alert-warning', // The class applied to the hovered swap item
+      });
+
+
+      function proceed(){
+        code = '';
+        $('#example3-right > .list-group-item').each((index, item) => {
+          funcname = $(item).find('.funcname').text()
+          switch (funcname) {
+            case 'going':
+              url = $(item).find('input[type="text"]').val()
+              code = code + `await Promise.all([
+  page.goto("` + url + `", {waitUntil: "domcontentloaded"}),  // waiting domcontentloaded
+  page.waitForNavigation({waitUntil: "domcontentloaded"}),  // waiting for navigation
+])\n\n`
+              break;
+            case 'waiting':
+              time = $(item).find('input[type="text"]').val()
+              code = code + `await page.waitForTimeout(`+time+`); // waiting `+(time/1000)+` seconds\n\n`
+              break;
+            case 'clicking':
+              selector = $(item).find('input[type="text"]').val()
+              code = code + `await page.click('`+selector+`'); // clicking via `+selector+` selector\n\n`
+              break;
+            case 'typing':
+              selector = $($(item).find('input[type="text"]')[0]).val()
+              text = $($(item).find('input[type="text"]')[1]).val()
+              code = code + `await page.$eval('`+selector+`', el => el.value = ''); // clear field
+var input = await page.$('`+selector+`'); // getting elem by `+selector+` selector
+await input.type("`+text+`\\n", {delay: 75})  // typing text with 75 milliseconds delay btw symbols
+await page.waitForTimeout(2000);  // waiting before next command\n\n`
+              break;
+          }
+        });
+
+        $('#code').html("<code class='language-javascript'>"+code+"</code>")
+        hljs.highlightAll();
+      }
+
+
+
+      setInterval(() => {
+        proceed()
+      }, 500)
+    </script>
+  </body>
+</html>
