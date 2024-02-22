@@ -1,6 +1,6 @@
 # dragncode
 
-#### [Live demo]( methaqualon.github.io/dragncode/) | [Questions](https://github.com/methaqualon/dragncode/issues)
+#### [Live demo](https://methaqualon.github.io/dragncode/) | [Questions](https://github.com/methaqualon/dragncode/issues)
 
 This is HTML one-filer (like one-liner) for simply create code via moving code blocks for [Puppeteer](https://github.com/puppeteer/puppeteer)
 
@@ -21,7 +21,7 @@ The project will develop if there is interest in it from the community, thank yo
 
 ### Usage
 
-Just go to the [Live demo]( methaqualon.github.io/dragncode/) and do what you need.
+Just go to the [Live demo](https://methaqualon.github.io/dragncode/) and do what you need.
 
 Move blocks from the left panel to the right, configure them and see result in Javascript code below.
 
